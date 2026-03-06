@@ -7,6 +7,8 @@ import static java.lang.Integer.parseInt;
 public class Utilities {
     public void getProfile(int number){
         displayFactors(getFactors(number));
+        displaySumOfDigits(number);
+        displayFactorial(number);
         if(isEven(number)) print("Is an Even Number");
         if(isOdd(number)) print("Is an Odd Number");
         if(isPerfect(number)) print("Is a Perfect Number");
@@ -120,8 +122,24 @@ public class Utilities {
         return false;
     }
 
+    //public String
+
+    public int sumOfDigits(int number){
+        String newNumber = "" + number;
+        char[] num = newNumber.toCharArray();
+        int total = 0;
+        for(char digit : num){
+            total += parseInt(String.valueOf(digit));
+        }
+        return total;
+    }
+
     private void print(String message){
         System.out.println(message);
+    }
+
+    public void displaySumOfDigits(int number){
+        print("The Sum Of Digits is: " + sumOfDigits(number));
     }
 
     private void displayFactors(ArrayList<Integer> factors){
@@ -130,5 +148,9 @@ public class Utilities {
             System.out.print(number + " ");
         }
         print("");
+    }
+
+    public void displayFactorial(int number){
+        print("The Factorial Of The Number is: " + getFactorial(number));
     }
 }
