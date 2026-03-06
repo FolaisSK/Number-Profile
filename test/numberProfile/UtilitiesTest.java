@@ -55,7 +55,7 @@ public class UtilitiesTest {
 
     @Test
     public void testToGetFactorial(){
-        assertEquals(120, utils.getFactorial(5));
+        assertEquals(120, utils.getFactorial(31));
     }
 
     @Test

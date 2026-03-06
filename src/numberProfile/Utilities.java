@@ -13,6 +13,8 @@ public class Utilities {
         if(isEven(number)) print("Is an Even Number");
         if(isOdd(number)) print("Is an Odd Number");
         if(isPerfect(number)) print("Is a Perfect Number");
+        if(isAbundant(number)) print("It is an Abundant Number");
+        if(isDeficient(number)) print("It is a Deficient Number");
         if(isComposite(number)) print("It is a Composite Number");
         if(isNiven(number)) print("Is a Niven Number");
         if(isArmstrong(number)) print("Is an Armstrong Number");
@@ -21,6 +23,7 @@ public class Utilities {
         if(isPerfectSquare(number)) print("Is a Perfect Square");
         if(isPerfectCube(number)) print("Is a Perfect Cube");
         if(isPalindrome(number)) print("It is a Palindrome");
+        if(isFibonacci(number)) print("Is in the Fibonacci Sequence");
     }
 
     public boolean isEven(int number){
@@ -98,7 +101,7 @@ public class Utilities {
         return number == result;
     }
 
-    public long getFactorial(int number){
+    public int getFactorial(int number){
         int result = 1;
         for(int index = number; index > 0; index--){
             result *= index;
@@ -130,6 +133,35 @@ public class Utilities {
             if(number % count == 0) counter++;
         }
         return counter > 2;
+    }
+
+    public boolean isFibonacci(int number){
+        int[] fibonacciSequence = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144,
+                233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657,
+                46368, 75025, 121393, 196418, 317811, 514229};
+
+        for(int value: fibonacciSequence){
+            if(number == value) return true;
+        }
+        return false;
+    }
+
+    public boolean isAbundant(int number){
+        ArrayList<Integer> factors = getFactors(number);
+        int total = 0;
+        for(int factor : factors){
+            total += factor;
+        }
+        return number > total;
+    }
+
+    public boolean isDeficient(int number){
+        ArrayList<Integer> factors = getFactors(number);
+        int total = 0;
+        for(int factor : factors){
+            total += factor;
+        }
+        return number < total;
     }
 
     public String toBinary(int number){
@@ -199,6 +231,7 @@ public class Utilities {
     }
 
     public void displayFactorial(int number){
-        print("The Factorial Of The Number is: " + getFactorial(number));
+        if(number < 0 || number > 31) print("Number might be negative or too high!");
+        else print("The Factorial Of The Number is: " + getFactorial(number));
     }
 }
