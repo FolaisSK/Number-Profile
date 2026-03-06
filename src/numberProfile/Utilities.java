@@ -6,12 +6,14 @@ import static java.lang.Integer.parseInt;
 
 public class Utilities {
     public void getProfile(int number){
+        displayType(number);
         displayFactors(getFactors(number));
         displaySumOfDigits(number);
         displayFactorial(number);
         if(isEven(number)) print("Is an Even Number");
         if(isOdd(number)) print("Is an Odd Number");
         if(isPerfect(number)) print("Is a Perfect Number");
+        if(isComposite(number)) print("It is a Composite Number");
         if(isNiven(number)) print("Is a Niven Number");
         if(isArmstrong(number)) print("Is an Armstrong Number");
         if(isPrime(number)) print("Is a Prime Number");
@@ -96,7 +98,7 @@ public class Utilities {
         return number == result;
     }
 
-    public int getFactorial(int number){
+    public long getFactorial(int number){
         int result = 1;
         for(int index = number; index > 0; index--){
             result *= index;
@@ -122,7 +124,53 @@ public class Utilities {
         return false;
     }
 
-    //public String
+    public boolean isComposite(int number){
+        int counter = 0;
+        for(int count = 1; count <= number; count++){
+            if(number % count == 0) counter++;
+        }
+        return counter > 2;
+    }
+
+    public String toBinary(int number){
+        String[] digits = new String[32];
+        int counter = 0;
+        while (number != 0){
+            int digit = number % 2;
+            number = number / 2;
+            digits[counter] = "" + digit;
+            counter++;
+        }
+
+        String result = "";
+        for(int count = counter - 1; count > -1; count--){
+            result += digits[count];
+        }
+        return result;
+    }
+
+    public String toOctal(int number){
+        String[] digits = new String[32];
+        int counter = 0;
+        while (number != 0){
+            int digit = number % 8;
+            number = number / 8;
+            digits[counter] = "" + digit;
+            counter++;
+        }
+
+        String result = "";
+        for(int count = counter - 1; count > -1; count--){
+            result += digits[count];
+        }
+        return result;
+    }
+
+    public void displayType(int number){
+        if (number == 0) print("A Zero Number");
+        if(number < 0) print("A Negative Number");
+        if(number > 0) print("A Positive Number");
+    }
 
     public int sumOfDigits(int number){
         String newNumber = "" + number;

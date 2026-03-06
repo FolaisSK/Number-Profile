@@ -75,4 +75,17 @@ public class UtilitiesTest {
         assertTrue(utils.isPerfectCube(8));
         assertTrue(utils.isPerfectCube(64));
     }
+
+    @Test
+    public void testForBinary(){
+        assertEquals("1111", utils.toBinary(15));
+        assertEquals("11111111", utils.toBinary(255));
+        assertEquals("1010", utils.toBinary(10));
+    }
+
+    @Test
+    public void testForOctal(){
+        assertEquals("12", utils.toOctal(10));
+        assertEquals("31", utils.toOctal(25));
+    }
 }
